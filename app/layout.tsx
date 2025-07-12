@@ -1,20 +1,20 @@
 import type { Metadata } from "next";
-import { Philosopher, Artifika } from 'next/font/google';
+import { Philosopher, Artifika } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/theme-provider";
+import { Header } from "@/components/header";
 
 const philosopher = Philosopher({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--display-family',
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--display-family",
 });
 
 const artifika = Artifika({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--text-family',
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--text-family",
 });
-
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -31,14 +31,12 @@ export default function RootLayout({
       <body
         className={`${philosopher.variable} ${artifika.variable} antialiased`}
       >
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Header href={"/"} type={"Login"} />
+            <main>
+              {children}
+            </main>
+        </ThemeProvider>
       </body>
     </html>
   );
